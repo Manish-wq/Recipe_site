@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block start %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Django </title>
+        <style>
+            table, th, td{
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body> -->
+        <h1>This Template is returned by Django Server</h1>
+        <table class="container">
+
+        <!-- {{ppl}} -->
+
+
+        <tr>
+          <th>S.NO</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can Vote</th>
+        </tr>
+        {% for people in ppl %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{people.Name}}</td>
+          <td>{{people.Age}}</td> 
+          <td {% if people.Age < 18 %} style='background-color: red' {% endif %}>
+            {% if people.Age >= 18 %}
+                👍
+            {% else %}
+                👎
+            {% endif %}
+          </td>
+        </tr>
+
+        {% endfor %}
+      </table>
+
+      
+<br>
+<hr>
+<div class="container">
+  <h1>This is sent email</h1>
+  <a href="{% url 'send_email' %}" class="btn btn-success">Send Email</a>
+</div>
+      <!-- {{ veggie.firstof }} -->
+<!-- 
+      {%  if 'radishh' in veggie %}
+            <h4>Yes, carrot present</h4>
+            {% elif "Tomato" in veggie %}
+            <h4>yes tomato available</h4>
+            {%  else %}
+            No
+            {% endif %} -->
+<!-- </body> -->
+<!-- <script>
+    console.log('Hey from Django');
+</script> -->
+<!-- </html> -->
+
+{% endblock %}
